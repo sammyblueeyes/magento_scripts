@@ -14,6 +14,8 @@ if [ $# -lt 6 ]; then
 fi
 
 
+cd $BU_LOCATION
+
 echo --- Using the following configuration:
 echo "    loc:    $BU_LOCATION"
 echo "    host:   $DBHOST"
@@ -24,7 +26,6 @@ echo "    server: $REMOTE_HOST"
 
 
 BU_FILE_NAME="data.sql"
-
 BU_DIR_NAME=`date +"%Y%m%d_%H%M%S"`
 
 
