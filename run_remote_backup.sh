@@ -71,7 +71,7 @@ MD5SUM_REMOTE=$(ssh $REMOTE_HOST "md5sum $BU_FILE_NAME.bz2" | cut -d ' ' -f 1)
 MD5SUM_LOCAL=$(md5sum $BU_DIR_NAME/$BU_FILE_NAME.bz2 | cut -d ' ' -f 1)
 
 
-echo --- Compare local and remote md5sums: $MD5SUM_REMOTE vs $MD5SUM_LOCAL
+echo --- Compare remote and local md5sums: $MD5SUM_REMOTE vs $MD5SUM_LOCAL
 if [ "$MD5SUM_LOCAL" != "$MD5SUM_REMOTE" ]; then
     echo ERROR: File download failed
     exit -1
