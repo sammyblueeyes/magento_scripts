@@ -41,6 +41,7 @@ mkdir "$BU_DIR_NAME"
 
 echo "--- Dumping the database to file"
 command="mysqldump -h $DBHOST -u $DBUSER -p$DBPASS $DBNAME"
+command+=" --ignore-table=$DBNAME.core_cache"
 # shellcheck disable=SC2029
 ssh "$REMOTE_HOST" "$command > data.sql"
 
@@ -58,7 +59,7 @@ fi
 
 echo "--- Deleting the old remote backup archive"
 # shellcheck disable=SC2029
-SSH_OUTPUT=$(ssh "$REMOTE_HOST" "rm $BU_FILE_NAME.bz2")
+SSH_OUTPUT=$(ssh "$REMOTE_HOST" "rm $BU_FILE_NAME.bz2" || echo "No need to delete old file")
 
 
 echo "--- Compressing remote backup file"
